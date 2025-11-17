@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>ReadLaterAI</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { width: 320px; font-family: system-ui, Arial, sans-serif; margin: 0; padding: 14px; }
+    h3 { margin: 0 0 10px; font-size: 16px; }
+    input, button { width: 100%; padding: 8px; margin: 6px 0; box-sizing: border-box; }
+    button { border: none; border-radius: 6px; background: #1f6fff; color: #fff; cursor: pointer; }
+    button:hover { background: #1557cc; }
+    button.secondary { background: #e5e7eb; color: #111; }
+    button.secondary:hover { background: #d1d5db; }
+    button.danger { background: #ef4444; }
+    button.danger:hover { background: #dc2626; }
+    small { color: #6b7280; }
+    #statusRow { display: flex; align-items: center; gap: 8px; margin: 6px 0 4px; }
+    #badge { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: #e5f4ff; color: #0369a1; }
+    #badge.ok { background: #dcfce7; color: #166534; }
+    #badge.warn { background: #fee2e2; color: #991b1b; }
+    #message { min-height: 18px; margin-top: 4px; font-size: 13px; }
+    .row { display: flex; gap: 8px; }
+    .row > button { flex: 1; }
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h3>ReadLaterAI</h3>
+
+  <div id="auth">
+    <input id="apiUrl" placeholder="API URL (e.g. http://127.0.0.1:8000)" />
+    <input id="username" placeholder="Username" />
+    <input id="password" type="password" placeholder="Password" />
+    <button id="loginBtn">Log in</button>
+    <small id="authMessage"></small>
+    <hr />
+  </div>
+
+  <div id="actions" style="display:none;">
+    <div id="statusRow">
+      <span id="badge" class="warn">No selection</span>
+      <small id="selInfo">Select text on the page, then click “Save selection”.</small>
+    </div>
+
+    <div class="row">
+      <button id="addBtn" class="secondary">Save selection</button>
+      <button id="clearBtn" class="secondary">Clear selection</button>
+    </div>
+
+    <button id="sendBtn">Send to ReadLaterAI</button>
+    <button id="logoutBtn" class="danger">Log out</button>
+
+    <div id="message"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

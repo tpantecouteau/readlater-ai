@@ -1,0 +1,23 @@
+services:
+  api:
+    build:
+      context: ./api
+    container_name: readlater_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api/app:/app/app
+      - ./.env:/app/.env 
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: readlater_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - ./.env:/app/.env 
