@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 
-const isProd = process.env.NODE_ENV === "production";
+// Use COOKIE_SECURE env var to control secure cookies (defaults to false for HTTP deployments)
+const isSecure = process.env.COOKIE_SECURE === "true";
 export const ACCESS = process.env.ACCESS_TOKEN_COOKIE || "access_token";
 export const REFRESH = process.env.REFRESH_TOKEN_COOKIE || "refresh_token";
 
@@ -23,7 +24,7 @@ export function setAuthCookiesResponse({
 
   response.cookies.set(ACCESS, accessToken, {
     httpOnly: true,
-    secure: isProd,
+    secure: isSecure,
     sameSite: "lax",
     path: "/",
     maxAge: accessMaxAge,
@@ -31,7 +32,7 @@ export function setAuthCookiesResponse({
 
   response.cookies.set(REFRESH, refreshToken, {
     httpOnly: true,
-    secure: isProd,
+    secure: isSecure,
     sameSite: "lax",
     path: "/",
     maxAge: refreshMaxAge,
