@@ -1,19 +1,15 @@
 import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
 
-// Use COOKIE_SECURE env var to control secure cookies (defaults to false for HTTP deployments)
 const isSecure = process.env.COOKIE_SECURE === "true";
 export const ACCESS = process.env.ACCESS_TOKEN_COOKIE || "access_token";
 export const REFRESH = process.env.REFRESH_TOKEN_COOKIE || "refresh_token";
 
-// ✅ FIX: use NextResponse to set cookies properly
-
-import { NextResponse } from "next/server";
-
 export function setAuthCookiesResponse({
   accessToken,
   refreshToken,
-  accessMaxAge = 60 * 30, // 30 minutes
-  refreshMaxAge = 60 * 60 * 24 * 7, // 7 days
+  accessMaxAge = 60 * 30,
+  refreshMaxAge = 60 * 60 * 24 * 7,
 }: {
   accessToken: string;
   refreshToken: string;

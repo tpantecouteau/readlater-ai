@@ -1,14 +1,13 @@
 from fastapi import APIRouter, Depends
 from sqlmodel import select
 from typing import Annotated
+
 from app.database import SessionDep
 from app.models import Post, User
 from app.routers.auth import get_current_user
 from app.schemas import ReadPost, UserRead
 
-
-router = APIRouter(prefix="/users", tags=["users"])
-
+router = APIRouter(prefix="/users", tags=["Users"])
 UserDep: Annotated[User, Depends(get_current_user)] = Depends(get_current_user)
 
 
@@ -22,9 +21,8 @@ async def get_my_posts(session: SessionDep, current_user: User = UserDep):
     posts = session.exec(
         select(Post)
         .where(Post.owner_id == current_user.id)
-        .order_by(Post.created_at.desc())  # pyright: ignore[reportUnknownMemberType, reportUnknownArgumentType, reportAttributeAccessIssue]
+        .order_by(Post.created_at.desc())  # type: ignore
     ).all()
-    # Convert tags string to list (same as posts router)
     for post in posts:
         if post.tags:
             post.tags = [t.strip() for t in post.tags.split(",") if t.strip()]

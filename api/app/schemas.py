@@ -1,18 +1,13 @@
-from pydantic import BaseModel, ConfigDict, EmailStr
-from typing import Literal
 from datetime import datetime
+from typing import Literal
 
-# --------------------------
-# ENUM / LITERAL
-# --------------------------
+from pydantic import BaseModel, ConfigDict, EmailStr, HttpUrl
+
 Status = Literal["pending", "scraped", "done", "error"]
 
 
-# --------------------------
-# POSTS
-# --------------------------
 class PostCreate(BaseModel):
-    url: str
+    url: HttpUrl
     content: str
     title: str
     owner_id: int | None = None
@@ -34,9 +29,6 @@ class ReadPost(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-# --------------------------
-# USERS
-# --------------------------
 class UserCreate(BaseModel):
     username: str
     password: str
@@ -52,9 +44,6 @@ class UserRead(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-# --------------------------
-# AUTH
-# --------------------------
 class LoginInput(BaseModel):
     username: str
     password: str
@@ -62,9 +51,9 @@ class LoginInput(BaseModel):
 
 class Token(BaseModel):
     access_token: str
-    refresh_token: str | None = None  # ✅ ajoute ça
+    refresh_token: str | None = None
     token_type: str = "bearer"
 
 
 class TokenData(BaseModel):
-    sub: str | None = None  # username
+    sub: str | None = None
