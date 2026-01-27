@@ -42,8 +42,8 @@ export function setAuthCookiesResponse({
 
 export function clearAuthCookiesResponse() {
   const res = NextResponse.json({ ok: true });
-  let deletedAccess = res.cookies.delete(ACCESS);
-  let deleteRefresh = res.cookies.delete(REFRESH);
+  res.cookies.delete(ACCESS);
+  res.cookies.delete(REFRESH);
   return res;
 }
 

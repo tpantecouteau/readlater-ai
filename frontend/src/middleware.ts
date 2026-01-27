@@ -6,10 +6,6 @@ export const config = {
   matcher: ["/", "/post/:path*"],
 };
 
-function isProtected(pathname: string) {
-  return pathname === "/" || pathname.startsWith("/post");
-}
-
 export default async function middleware(req: NextRequest) {
   const isAuth = isAuthenticatedFromReq(req);
   const { pathname } = req.nextUrl;

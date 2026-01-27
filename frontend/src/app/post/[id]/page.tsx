@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 
 type Post = {
   id: number;
@@ -29,9 +30,9 @@ export default function PostDetail() {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
-      <a href="/" className="text-sm text-neutral-400">
+      <Link href="/" className="text-sm text-neutral-400">
         ← Retour
-      </a>
+      </Link>
       <h1 className="text-2xl font-bold mt-2">{post.title || "Sans titre"}</h1>
       <a href={post.url} target="_blank" className="text-blue-400">
         {post.url}

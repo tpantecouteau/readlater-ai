@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Header() {
   const router = useRouter();
@@ -27,9 +28,9 @@ export default function Header() {
   return (
     <header className="w-full border-b border-neutral-800 bg-neutral-900/60 backdrop-blur-sm">
       <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="/" className="text-lg font-semibold tracking-wide">
+        <Link href="/" className="text-lg font-semibold tracking-wide">
           ReadLaterAI
-        </a>
+        </Link>
 
         {isAuth && (
           <button
