@@ -32,7 +32,7 @@ export async function refreshAccessTokenIfNeeded(): Promise<string | null> {
   if (!refresh) return null;
   console.log("we are going to refresh");
   console.log(refresh);
-  // Appel FastAPI /auth/refresh (adapte l’URL à ton backend)
+  // Appel FastAPI /auth/refresh (adapte l'URL à ton backend)
   const res = await fetch(`${FASTAPI}/auth/refresh`, {
     method: "POST",
     headers: { Authorization: `Bearer ${refresh}` },
@@ -47,7 +47,7 @@ export async function refreshAccessTokenIfNeeded(): Promise<string | null> {
     access_token: string;
     refresh_token: string;
   };
-  // certains back renvoient un new refresh_token, d’autres non
+  // certains back renvoient un new refresh_token, d'autres non
   setAuthCookiesResponse({
     accessToken: data.access_token,
     refreshToken: data.refresh_token,
@@ -55,13 +55,14 @@ export async function refreshAccessTokenIfNeeded(): Promise<string | null> {
   return data.access_token;
 }
 
-/** Obtenir un access token prêt à l’emploi (refresh automatique si nécessaire) */
+/** Obtenir un access token prêt à l'emploi (refresh automatique si nécessaire) */
 export async function getAccessToken(): Promise<string | null> {
   const access = await getAccessCookie();
   const refresh = await getRefreshCookie();
   if (!access && !!refresh) return await refreshAccessTokenIfNeeded();
   if (!refresh) return null;
-  // vérifier si proche d’expiration
+  if (!access) return null;
+  // vérifier si proche d'expiration
   const exp = decodeExp(access);
   if (!exp) return access;
   const now = Math.floor(Date.now() / 1000);
