@@ -1,0 +1,27 @@
+# =============================================================================
+# Terraform Variables - EXAMPLE FILE
+# =============================================================================
+# Copy this file to terraform.tfvars and fill in your values
+# DO NOT commit terraform.tfvars to git (it contains secrets)
+# =============================================================================
+
+# AWS region (Paris recommended for France)
+aws_region = "eu-west-3"
+
+# Environment
+environment = "dev"
+
+# Project name (used for resource naming)
+project_name = "readlater"
+
+# Database configuration
+db_name     = "readlater"
+db_username = "admin"
+db_password = "CHANGE_ME_STRONG_PASSWORD_123!"  # ⚠️ Change this!
+
+# EC2 configuration
+ec2_key_name = "readlater-key"  # Name of your SSH key pair in AWS
+
+# Your IP for SSH access (get it from https://whatismyip.com)
+# Format: "x.x.x.x/32"
+my_ip = "0.0.0.0/0"  # ⚠️ Restrict this in production!

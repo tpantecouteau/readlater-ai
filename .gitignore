@@ -1,0 +1,115 @@
+# ────────────────────────────
+# GLOBAL / ROOT
+# ────────────────────────────
+.env
+.env.local
+.env.development
+.env.production
+!.env.example
+*.log
+*.tmp
+*.cache
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Node / PNPM global
+node_modules/
+.pnpm-store/
+npm-debug.log
+pnpm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# OS
+*.bak
+*.orig
+
+# ────────────────────────────
+# FRONTEND (Next.js + PNPM)
+# ────────────────────────────
+frontend/node_modules/
+frontend/.next/
+frontend/.turbo/
+frontend/out/
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+frontend/dist/
+frontend/.vercel
+
+# Next.js build artifacts
+.next/
+out/
+
+# Static export
+public/static/
+public/*.map
+
+# ────────────────────────────
+# API (Python FastAPI)
+# ────────────────────────────
+api/__pycache__/
+api/**/__pycache__/
+**/__pycache__/
+api/.pytest_cache/
+api/*.pyc
+api/*.pyo
+api/*.pyd
+api/.env
+api/.env.*
+api/.coverage
+api/coverage.xml
+
+# SQLite database (dev only)
+*.db
+*.sqlite
+*.sqlite3
+
+# Virtual envs
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# ────────────────────────────
+# EXTENSION CHROME
+# ────────────────────────────
+extension/node_modules/
+extension/dist/
+extension/build/
+extension/.env
+extension/.env.*
+
+# Generated Chrome extension files (if any)
+extension/*.zip
+
+# ────────────────────────────
+# DOCKER
+# ────────────────────────────
+docker-compose.override.yml
+docker-compose.prod.yml
+docker-data/
+*.pid
+
+# Avoid copying folders inside containers
+**/.dockerignore
+
+# ────────────────────────────
+# TERRAFORM
+# ────────────────────────────
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/terraform.tfvars
+terraform/*.pem
+terraform/crash.log
+terraform/.terraform.lock.hcl
+
+# ────────────────────────────
+# GIT / RELEASE / CI
+# ────────────────────────────
+.github/*-secret.yml

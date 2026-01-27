@@ -1,4 +1,27 @@
 services:
+  # ─────────────────────────────────
+  # PostgreSQL Database
+  # ─────────────────────────────────
+  db:
+    image: postgres:15-alpine
+    container_name: readlater_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: readlater
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ─────────────────────────────────
+  # FastAPI Backend
+  # ─────────────────────────────────
   api:
     build:
       context: ./api
@@ -7,10 +30,17 @@ services:
       - "8000:8000"
     volumes:
       - ./api/app:/app/app
-      - ./.env:/app/.env 
+      - ./.env:/app/.env
     environment:
       - PYTHONUNBUFFERED=1
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/readlater
+    depends_on:
+      db:
+        condition: service_healthy
 
+  # ─────────────────────────────────
+  # Next.js Frontend
+  # ─────────────────────────────────
   frontend:
     build:
       context: ./frontend
@@ -20,4 +50,12 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
-      - ./.env:/app/.env 
+      - ./.env:/app/.env
+    environment:
+      # Dans Docker, le frontend doit utiliser le nom du service "api"
+      - FASTAPI_BASE_URL=http://api:8000
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:

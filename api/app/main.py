@@ -3,7 +3,9 @@ from contextlib import asynccontextmanager
 from app.routers import posts, users, auth
 from app.database import init_db
 from starlette.middleware.cors import CORSMiddleware
+import os 
 
+CORS_ORIGIN = os.getenv("CORS_ORIGIN", "http://localhost:3000")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -17,7 +19,7 @@ app = FastAPI(title="Cenmark", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[CORS_ORIGIN],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

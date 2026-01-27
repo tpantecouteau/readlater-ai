@@ -11,6 +11,7 @@ function keyFor(url) { return `rl:${url}`; }
 
 function getSelections(url) {
   try {
+    console.log("🚀 getSelections:", url);
     const raw = sessionStorage.getItem(keyFor(url));
     return raw ? JSON.parse(raw) : [];
   } catch { return []; }
@@ -29,6 +30,7 @@ function clearSelections(url) {
 function getCurrentSelection() {
   const sel = window.getSelection && window.getSelection();
   const text = sel ? sel.toString().trim() : "";
+  console.log("🚀 getCurrentSelection:", text);
   return text;
 }
 

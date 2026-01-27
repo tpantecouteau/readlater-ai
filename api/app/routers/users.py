@@ -24,4 +24,8 @@ async def get_my_posts(session: SessionDep, current_user: User = UserDep):
         .where(Post.owner_id == current_user.id)
         .order_by(Post.created_at.desc())  # pyright: ignore[reportUnknownMemberType, reportUnknownArgumentType, reportAttributeAccessIssue]
     ).all()
+    # Convert tags string to list (same as posts router)
+    for post in posts:
+        if post.tags:
+            post.tags = [t.strip() for t in post.tags.split(",") if t.strip()]
     return posts

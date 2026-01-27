@@ -1,13 +1,17 @@
 from sqlmodel import SQLModel, create_engine, Session
 from typing import Annotated
 from fastapi import Depends
+import os
 
 # Fichier SQLite local (sera créé automatiquement à la racine)
-DATABASE_URL = "sqlite:///./readlater.db"
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql://postgres:postgres@localhost:5432/readlater"
+)
 
 # ⚙️ connect_args requis pour SQLite (thread unique)
 engine = create_engine(
-    DATABASE_URL, echo=True, connect_args={"check_same_thread": False}
+    DATABASE_URL, echo=os.getenv("NODE_ENV") != "production"
 )
 
 # Création de la BDD (tables)
