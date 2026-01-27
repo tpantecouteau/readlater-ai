@@ -21,7 +21,7 @@ data "aws_ami" "amazon_linux" {
 # EC2 Instance
 resource "aws_instance" "app" {
   ami                         = data.aws_ami.amazon_linux.id
-  instance_type               = "t3.micro" # Free Tier eligible
+  instance_type               = "t3.small" # 2 vCPU, 2 GB RAM - needed for building Next.js
   key_name                    = var.ec2_key_name
   subnet_id                   = aws_subnet.public.id
   vpc_security_group_ids      = [aws_security_group.ec2.id]
