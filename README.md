@@ -11,7 +11,7 @@ A personal reading list app with AI-powered content analysis. Save articles, get
 
 ## Screenshots
 ![Home page](docs/home.png)
-![Post analysis](docs/analysis.png)
+![Post analysis](docs/post.png)
 
 ## Local Development
 
