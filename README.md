@@ -9,6 +9,10 @@ A personal reading list app with AI-powered content analysis. Save articles, get
 - **Database**: PostgreSQL
 - **Infra**: Docker, Terraform (AWS)
 
+## Screenshots
+![Home page](docs/home.png)
+![Post analysis](docs/analysis.png)
+
 ## Local Development
 
 ```bash
