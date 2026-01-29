@@ -35,23 +35,8 @@ resource "aws_security_group" "ec2" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # API port
-  ingress {
-    description = "FastAPI"
-    from_port   = 8000
-    to_port     = 8000
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  # Frontend port
-  ingress {
-    description = "Next.js"
-    from_port   = 3000
-    to_port     = 3000
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  # Note: Ports 8000 and 3000 are no longer exposed publicly
+  # All traffic goes through nginx reverse proxy on port 80/443
 
   # Outbound - allow all
   egress {

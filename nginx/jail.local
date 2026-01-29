@@ -1,0 +1,40 @@
+[DEFAULT]
+# Ban for 1 hour by default
+bantime = 1h
+# Look for failures in the last 10 minutes
+findtime = 10m
+# Allow 5 retries before ban
+maxretry = 5
+# Use firewalld for banning
+banaction = firewallcmd-rich-rules[actiontype=]
+
+[sshd]
+enabled = true
+port = ssh
+filter = sshd
+logpath = /var/log/secure
+maxretry = 3
+bantime = 24h
+
+[nginx-http-auth]
+enabled = true
+port = http,https
+filter = nginx-http-auth
+logpath = /var/log/nginx/error.log
+maxretry = 5
+
+[nginx-limit-req]
+enabled = true
+port = http,https
+filter = nginx-limit-req
+logpath = /var/log/nginx/error.log
+maxretry = 10
+bantime = 1h
+
+[nginx-botsearch]
+enabled = true
+port = http,https
+filter = nginx-botsearch
+logpath = /var/log/nginx/access.log
+maxretry = 2
+bantime = 1d
