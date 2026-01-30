@@ -30,7 +30,7 @@ export default function RegisterPage() {
 
             if (!res.ok) {
                 const data = await res.json();
-                setErr(data.error || "Erreur lors de l'inscription");
+                setErr(data.error || "Erreur lors de l&apos;inscription");
                 return;
             }
 
@@ -50,7 +50,7 @@ export default function RegisterPage() {
                 {err && <p className="text-red-500 text-sm">{err}</p>}
                 <input
                     className="w-full px-3 py-2 rounded bg-neutral-800"
-                    placeholder="Nom d'utilisateur"
+                    placeholder="Nom d&apos;utilisateur"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
@@ -83,7 +83,7 @@ export default function RegisterPage() {
                     className="w-full py-2 bg-indigo-600 rounded disabled:opacity-50"
                     disabled={loading}
                 >
-                    {loading ? "Inscription..." : "S'inscrire"}
+                    {loading ? "Inscription..." : "S&apos;inscrire"}
                 </button>
                 <p className="text-sm text-center text-neutral-400">
                     Déjà un compte ?{" "}
