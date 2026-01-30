@@ -50,7 +50,7 @@ export default function RegisterPage() {
                 {err && <p className="text-red-500 text-sm text-center">{err}</p>}
                 <input
                     className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 focus:border-indigo-500 focus:outline-none transition"
-                    placeholder="Nom d'utilisateur"
+                    placeholder={"Nom d'utilisateur"}
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required

@@ -29,7 +29,7 @@ export default function LoginPage() {
         {err && <p className="text-red-500 text-sm text-center">{err}</p>}
         <input
           className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 focus:border-indigo-500 focus:outline-none transition"
-          placeholder="Nom d'utilisateur"
+          placeholder={"Nom d'utilisateur"}
           value={username}
           onChange={(e) => setU(e.target.value)}
         />
@@ -46,14 +46,9 @@ export default function LoginPage() {
         <p className="text-sm text-center text-neutral-400">
           Pas encore de compte ?{" "}
           <Link href="/register" className="text-indigo-400 hover:underline">
-            S'inscrire
+            {"S'inscrire"}
           </Link>
         </p>
-        <div className="mt-6 pt-4 border-t border-neutral-700">
-          <p className="text-xs text-center text-neutral-500">
-            🧩 Extension Chrome bientôt disponible
-          </p>
-        </div>
       </form>
     </div>
   );
