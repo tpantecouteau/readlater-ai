@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [username, setU] = useState("");
@@ -42,7 +43,14 @@ export default function LoginPage() {
         <button className="w-full py-2 bg-indigo-600 rounded">
           Se connecter
         </button>
+        <p className="text-sm text-center text-neutral-400">
+          Pas encore de compte ?{" "}
+          <Link href="/register" className="text-indigo-400 hover:underline">
+            S'inscrire
+          </Link>
+        </p>
       </form>
     </div>
   );
 }
+
