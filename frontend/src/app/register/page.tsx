@@ -30,7 +30,7 @@ export default function RegisterPage() {
 
             if (!res.ok) {
                 const data = await res.json();
-                setErr(data.error || "Erreur lors de l&apos;inscription");
+                setErr(data.error || "Erreur lors de l'inscription");
                 return;
             }
 
@@ -44,19 +44,19 @@ export default function RegisterPage() {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center">
-            <form onSubmit={onSubmit} className="w-80 space-y-3">
-                <h1 className="text-xl font-semibold">Inscription</h1>
-                {err && <p className="text-red-500 text-sm">{err}</p>}
+        <div className="min-h-screen flex items-center justify-center px-4">
+            <form onSubmit={onSubmit} className="w-full max-w-sm space-y-4">
+                <h1 className="text-2xl font-semibold text-center">Inscription</h1>
+                {err && <p className="text-red-500 text-sm text-center">{err}</p>}
                 <input
-                    className="w-full px-3 py-2 rounded bg-neutral-800"
-                    placeholder="Nom d&apos;utilisateur"
+                    className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 focus:border-indigo-500 focus:outline-none transition"
+                    placeholder="Nom d'utilisateur"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
                 />
                 <input
-                    className="w-full px-3 py-2 rounded bg-neutral-800"
+                    className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 focus:border-indigo-500 focus:outline-none transition"
                     placeholder="Email"
                     type="email"
                     value={email}
@@ -64,7 +64,7 @@ export default function RegisterPage() {
                     required
                 />
                 <input
-                    className="w-full px-3 py-2 rounded bg-neutral-800"
+                    className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 focus:border-indigo-500 focus:outline-none transition"
                     placeholder="Mot de passe"
                     type="password"
                     value={password}
@@ -72,7 +72,7 @@ export default function RegisterPage() {
                     required
                 />
                 <input
-                    className="w-full px-3 py-2 rounded bg-neutral-800"
+                    className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 focus:border-indigo-500 focus:outline-none transition"
                     placeholder="Confirmer le mot de passe"
                     type="password"
                     value={confirmPassword}
@@ -80,7 +80,7 @@ export default function RegisterPage() {
                     required
                 />
                 <button
-                    className="w-full py-2 bg-indigo-600 rounded disabled:opacity-50"
+                    className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-medium disabled:opacity-50 transition"
                     disabled={loading}
                 >
                     {loading ? "Inscription..." : "S'inscrire"}
@@ -95,3 +95,4 @@ export default function RegisterPage() {
         </div>
     );
 }
+
