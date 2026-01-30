@@ -113,3 +113,10 @@ terraform/.terraform.lock.hcl
 # GIT / RELEASE / CI
 # ────────────────────────────
 .github/*-secret.yml
+
+# ────────────────────────────
+# PERSONAL / PRIVATE DOCUMENTS
+# ────────────────────────────
+INTERVIEW_SECURITY_EXPERIENCE.md
+INTERVIEW_PROJECT_OVERVIEW.md
+SECURITY_INCIDENT_REPORT.md

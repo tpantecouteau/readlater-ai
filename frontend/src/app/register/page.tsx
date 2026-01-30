@@ -83,7 +83,7 @@ export default function RegisterPage() {
                     className="w-full py-2 bg-indigo-600 rounded disabled:opacity-50"
                     disabled={loading}
                 >
-                    {loading ? "Inscription..." : "S&apos;inscrire"}
+                    {loading ? "Inscription..." : "S'inscrire"}
                 </button>
                 <p className="text-sm text-center text-neutral-400">
                     Déjà un compte ?{" "}
