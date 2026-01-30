@@ -1,12 +1,26 @@
-passlib
-python-jose[cryptography]
-sqlmodel
-fastapi
-starlette
-uvicorn
-pydantic[email]
-python-dotenv
-python-multipart
-requests
-psycopg2-binary
-slowapi
+# Security: Pin all versions to prevent supply chain attacks
+# Last audited: 2026-01-30
+
+# Auth
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.4.0
+ecdsa>=0.19.1  # Fix CVE-2024-23342 - force latest version
+
+# Web framework - use latest FastAPI for security patches
+fastapi>=0.116
+# starlette is managed by FastAPI
+uvicorn==0.34.3
+pydantic[email]==2.11.5
+
+# Database
+sqlmodel==0.0.27
+psycopg2-binary==2.9.10
+
+# Utilities
+python-dotenv==1.0.1
+python-multipart==0.0.22  # Fix CVE-2026-24486
+requests==2.32.4  # Fix CVE-2024-47081
+
+# Rate limiting
+slowapi==0.1.9
+
